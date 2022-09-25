@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass&family=Roboto&display=swap');
+* {
+	margin: 0;
+	padding: 0;
+	border: none;
+	box-sizing: border-box;
+	font-family: 'Overpass', sans-serif;
+}
+
+#root {
+	height: 100vh;
+	width: 100vw;
+}
+
+.weather-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+
+.weather-container > .day-container:not(:first-child) {
+	margin-left: -5px;
+}
