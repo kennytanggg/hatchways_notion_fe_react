@@ -6,7 +6,7 @@ import DateUtil from './utils/DateUtil';
 const api_key = 'b7dc88a8227d0789516251f9056a5c12';
 const lat = 40.6174;
 const lon = -74.0121;
-const url_5dayforecast = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${api_key}&units=imperial`;
+const url_5dayforecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${api_key}&units=imperial`;
 
 let req_counter = 0;
 
