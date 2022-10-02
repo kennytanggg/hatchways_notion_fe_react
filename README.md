@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This weather app uses the OpenWeather API to display a 5-day forecast based on a zip code.
+Support for multiple locations and user-defined zip codes will be coming soon!
+
 ## Available Scripts
 
 In the project directory, you can run:

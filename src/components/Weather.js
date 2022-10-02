@@ -3,7 +3,6 @@ import DayForecast from './DayForecast';
 
 function Weather(props) {
 	console.log('props is', props);
-	// I've got the data I want and now I'm putting it into the state variable. I've set the state of the Weather component to be the WeeklyForecastData.  How do I use this to render multiple components?  Can't I iterate through the array?
 	return props.data.map(({ day, high_temp, low_temp, icon_style }) => {
 		return (
 			<DayForecast

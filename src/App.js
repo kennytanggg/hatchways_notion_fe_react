@@ -17,16 +17,10 @@ class App extends React.Component {
 		this.state = {
 			weeklyForecast: [],
 		};
-		// When passing methods to components from a class, you must bind the method to the component instance.
-		// this.getWeatherData = this.getWeatherData.bind(this);
 	}
 
 	componentDidMount() {
-		// Initializes API call
-		console.log('state weather data is:', this.state.weeklyForecast);
 		this.getWeatherData();
-
-		console.log('state weather data is:', this.state.weeklyForecast);
 	}
 
 	updateWeatherData({ day, high_temp, low_temp, icon_style }) {
@@ -47,7 +41,6 @@ class App extends React.Component {
 			const response = await fetch(url_5dayforecast);
 			if (response.ok) {
 				let data = await response.json();
-				// let weeklyForecastData = [];
 
 				data.list.forEach((time) => {
 					if (time.dt_txt.includes('12:00:00')) {
@@ -66,7 +59,6 @@ class App extends React.Component {
 						console.log('state weather data is:', this.state.weeklyForecast);
 					}
 				});
-				// console.log('state weather data is:', this.state.weeklyForecast);
 			}
 		}
 	}
