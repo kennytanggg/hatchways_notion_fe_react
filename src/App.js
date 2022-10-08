@@ -2,6 +2,7 @@ import React from 'react';
 import './components/Weather.css';
 import Weather from './components/Weather';
 import DateUtil from './utils/DateUtil';
+import Search from './components/Search';
 
 const api_key = 'b7dc88a8227d0789516251f9056a5c12';
 const lat = 40.6174;
@@ -13,7 +14,7 @@ let req_counter = 0;
 class App extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log('initializing component');
+		// console.log('initializing component');
 		this.state = {
 			weeklyForecast: [],
 		};
@@ -36,7 +37,7 @@ class App extends React.Component {
 
 	async getWeatherData() {
 		req_counter++;
-		console.log('retrieving weather data', 'count:', req_counter);
+		// console.log('retrieving weather data', 'count:', req_counter);
 		if (req_counter < 100) {
 			const response = await fetch(url_5dayforecast);
 			if (response.ok) {
@@ -52,11 +53,10 @@ class App extends React.Component {
 							},
 						} = time;
 
-						console.log('weather data is:', { day, high_temp, low_temp, icon_style });
+						// console.log('weather data is:', { day, high_temp, low_temp, icon_style });
 
 						// KT: Why does this return a duplicate copy of the 5 day forecast?
 						this.updateWeatherData({ day, high_temp, low_temp, icon_style });
-						console.log('state weather data is:', this.state.weeklyForecast);
 					}
 				});
 			}
@@ -67,7 +67,8 @@ class App extends React.Component {
 		return (
 			<div className="weather-container">
 				{/* <Weather data={this.state.weeklyForecast}></Weather> */}
-				{console.log('state weather data is:', this.state.weeklyForecast)}
+				{/* {console.log('state weather data is:', this.state.weeklyForecast)} */}
+				<Search></Search>
 				<Weather data={this.state.weeklyForecast}></Weather>
 			</div>
 		);

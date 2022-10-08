@@ -2,7 +2,7 @@ import React from 'react';
 import './DayForecast.css';
 
 function DayForecast(props) {
-	console.log('initializing DayForecast Component');
+	// console.log('initializing DayForecast Component');
 	return (
 		<div className="day-container">
 			<label>{props.day}</label>
