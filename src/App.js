@@ -16,6 +16,7 @@ class App extends React.Component {
 		super(props);
 		// console.log('initializing component');
 		this.state = {
+			location: '',
 			weeklyForecast: [],
 		};
 	}
@@ -27,10 +28,20 @@ class App extends React.Component {
 	updateWeatherData({ day, high_temp, low_temp, icon_style }) {
 		this.setState((state) => {
 			return {
+				location: [...state.location], //Is this line needed?
 				weeklyForecast: [
 					...state.weeklyForecast,
 					{ day: day, high_temp: high_temp, low_temp: low_temp, icon_style: icon_style },
 				],
+			};
+		});
+	}
+
+	updateLocation(location) {
+		this.setState((state) => {
+			return {
+				location: location,
+				...state.weeklyForecast, //Is this line needed?
 			};
 		});
 	}
@@ -42,6 +53,10 @@ class App extends React.Component {
 			const response = await fetch(url_5dayforecast);
 			if (response.ok) {
 				let data = await response.json();
+
+				const location = data.city.name;
+				console.log(data, location);
+				this.updateLocation(location);
 
 				data.list.forEach((time) => {
 					if (time.dt_txt.includes('12:00:00')) {
@@ -62,14 +77,28 @@ class App extends React.Component {
 			}
 		}
 	}
+
+	// // HOW TO DEBUG STATE OF COMPONENTS
+	// testState() {
+	// 	return console.log(App.state);
+	// }
+
 	// KT: Why is this rendering 4 times? (initial painting, after function to retrieve data completes, ?, ?)
 	render() {
 		return (
-			<div className="weather-container">
+			<div>
 				{/* <Weather data={this.state.weeklyForecast}></Weather> */}
 				{/* {console.log('state weather data is:', this.state.weeklyForecast)} */}
-				<Search></Search>
-				<Weather data={this.state.weeklyForecast}></Weather>
+				<div>
+					<Search></Search>
+				</div>
+				{/* how to debug state in your app? onClick={this.testState} */}
+				<div className="weather-container">
+					<label>Weather in: {this.state.location}</label>
+					<div className="forecast-container">
+						<Weather data={this.state.weeklyForecast}></Weather>
+					</div>
+				</div>
 			</div>
 		);
 	}
